@@ -1,0 +1,25 @@
+﻿@model Emotion
+
+<h3>Entry @Model.Date </h3>
+
+<table class="table">
+    <tr>
+        <th>Entry ID</th>
+        <th>Date</th>
+        @*   <th>Emotion Type </th>*@
+        <th>Emotion</th>
+        <th>Entry</th>
+
+    </tr>
+    <tr>
+        <td>@Model.NewEntryID</td>
+        <td>@Model.Date</td>
+        @*  <td>@Model.EmotionType</td> *@
+        <td>@Model.EmotionName</td> 
+        <td>@Model.EntryText</td>
+    </tr>
+</table>
+
+<div style="display: block">
+    <a href="/Emotion/UpdateEmotion/@Model.NewEntryID">Update this Entry</a>
+</div>

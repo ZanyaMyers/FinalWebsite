@@ -1,3 +1,6 @@
+using MySql.Data.MySqlClient;
+using System.Data;
+
 namespace FinalWebsite
 {
     public class Program
@@ -8,6 +11,15 @@ namespace FinalWebsite
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();
+
+            builder.Services.AddScoped<IDbConnection>((s) =>
+            {
+                IDbConnection conn = new MySqlConnection(builder.Configuration.GetConnectionString("entryintake"));
+                conn.Open();
+                return conn;
+            });
+
+            builder.Services.AddTransient<IEmotionRepository, EmotionRepository>();
 
             var app = builder.Build();
 

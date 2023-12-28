@@ -1,0 +1,19 @@
+﻿@model Emotion
+
+<h2>Update @Model.Date</h2>
+
+@using (Html.BeginForm("UpdateEmotionToDatabase", "Emotion", "Post"))
+{
+    <input asp-for="NewEntryID" type="hidden" value="@Model.NewEntryID" />
+
+   @*  <label asp-for="Date" class="control-label">Date</label>
+    <input type="Date" name="Date" class="form-control" value="@Model.Date" />
+
+    <label asp-for="EmotionName" class="control-label">Emotion</label>
+    <input type="text" name="Emotion" class="form-control" value="@Model.EmotionName" /> *@
+
+    <label asp-for="EntryText" class="control-label">Entry</label>
+    <input type="text"  name="Entry" class="form-control" value="@Model.EntryText" />
+
+    <input type="submit" value="Update Entry" class="btn btn-primary" />
+}

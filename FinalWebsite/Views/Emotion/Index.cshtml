@@ -1,0 +1,25 @@
+﻿@model IEnumerable<Emotion>
+
+<h2>Dear Diary .. </h2>
+<table class="table">
+    <tr>
+        <th>EntryID</th>
+        <th>Date</th>
+        @* <th>Emotion Type</th> *@
+        <th>Emotion </th>
+        <th>Entry Text</th>
+    </tr>
+
+    @foreach (var emotion in @Model)
+    {
+        <tr>
+            <td><a href=/Emotion/ViewEmotion/@emotion.NewEntryID>@emotion.NewEntryID</a></td>
+            <td>@emotion.Date</td>
+           @*  <td>@cat.EmotionType</td> *@
+            <td>@emotion.EmotionName</td>
+            <td>@emotion.EntryText</td>
+           
+        </tr>
+    }
+
+</table>
