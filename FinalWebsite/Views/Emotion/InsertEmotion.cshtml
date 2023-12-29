@@ -1,13 +1,13 @@
 ﻿@model Emotion
 
-<h2>Create a New Entry</h2>
+<h2>Tell Me About Your Day</h2>
 
 @using (Html.BeginForm("InsertEmotionToDatabase", "Emotion", FormMethod.Post))
 {
     <input asp-for="NewEntryID" type="hidden" value="" />
 
     <label asp-for="Date" class="control-label">Date</label>
-    <input asp-for="Date" type="date" class="form-control" />
+    <input asp-for="Date" type="Date" class="form-control" />
 
     <label asp-for="EntryText" class="control-label">Entry</label>
     <input asp-for="EntryText" type="text" class="form-control" />
@@ -17,7 +17,8 @@
         <select asp-for="EmotionName" class="form-control">
             @foreach (var cat in Model.Categories)
             {
-                <option value="@cat.EmotionType">@cat.EmotionType @cat.EmotionName</option>
+               @*  <option value="@cat.EmotionType">@cat.EmotionName @cat.EmotionType</option> *@
+                <option value="@cat.EmotionName"> @cat.EmotionName</option>
             }
         </select>
     </div>

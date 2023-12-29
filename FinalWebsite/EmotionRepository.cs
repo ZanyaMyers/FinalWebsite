@@ -23,7 +23,7 @@ namespace FinalWebsite
 
         public IEnumerable<Emotion> GetAllEmotions()
         {
-            return _conn.Query<Emotion>("SELECT * FROM ENTRIES;");
+            return _conn.Query<Emotion>("SELECT * FROM ENTRIES; SELECT * FROM emotions;");
         }
 
         public IEnumerable<Category> GetCategories()
@@ -38,8 +38,8 @@ namespace FinalWebsite
 
         public void InsertEmotion(Emotion emotionToInsert)
         {
-            _conn.Execute("INSERT INTO entries (DATE, EMOTIONNAME, ENTRYTEXT) VALUES (@date,@emotionname, @entrytext);",
-       new { Date = emotionToInsert.Date, EmotionName = emotionToInsert.EmotionName, EntryText = emotionToInsert.EntryText });
+            _conn.Execute("INSERT INTO entries (DATE, EMOTIONNAME, ENTRYTEXT) VALUES (@date, @emotionname, @entrytext);",
+       new { Date = emotionToInsert.Date, EmotionType = emotionToInsert.EmotionType, EmotionName = emotionToInsert.EmotionName, EntryText = emotionToInsert.EntryText });
         }
 
         public void UpdateEmotion(Emotion emotion)

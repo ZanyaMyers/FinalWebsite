@@ -15,5 +15,7 @@ namespace FinalWebsite
         public IEnumerable<Category> GetCategories();
 
         public Emotion AssignCategory();
+
+        public void DeleteEmotion(Emotion emotion);
     }
 }
