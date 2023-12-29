@@ -2,7 +2,7 @@
 using FinalWebsite.Models;
 using System.Data;
 
-namespace FinalWebsite
+namespace FinalWebsite.Repository
 {
     public class EmotionRepository : IEmotionRepository
     {
@@ -38,21 +38,21 @@ namespace FinalWebsite
 
         public Emotion GetEmotion(int id)
         {
-            return _conn.QuerySingle<Emotion>("SELECT * FROM ENTRIES WHERE NEWENTRYID = @id", new { id = id });
+            return _conn.QuerySingle<Emotion>("SELECT * FROM ENTRIES WHERE NEWENTRYID = @id", new { id });
         }
 
         public void InsertEmotion(Emotion emotionToInsert)
         {
             _conn.Execute("INSERT INTO entries (DATE, EMOTIONNAME, ENTRYTEXT) VALUES (@date, @EmotionName, @EntryText);",
-       new { Date = emotionToInsert.Date, EmotionType = emotionToInsert.EmotionType, EmotionName = emotionToInsert.EmotionName, EntryText = emotionToInsert.EntryText });
+       new { emotionToInsert.Date, emotionToInsert.EmotionType, emotionToInsert.EmotionName, emotionToInsert.EntryText });
         }
 
         public void UpdateEmotion(Emotion emotion)
         {
-             _conn.Execute("UPDATE entries SET EntryText = @EntryText WHERE NewEntryID = @id",
-            new { EntryText = emotion.EntryText, id = emotion.NewEntryID });
+            _conn.Execute("UPDATE entries SET EntryText = @EntryText WHERE NewEntryID = @id",
+           new { emotion.EntryText, id = emotion.NewEntryID });
         }
 
-    
+
     }
 }
