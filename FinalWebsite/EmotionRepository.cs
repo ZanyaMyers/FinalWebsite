@@ -38,8 +38,8 @@ namespace FinalWebsite
 
         public void InsertEmotion(Emotion emotionToInsert)
         {
-            _conn.Execute("INSERT INTO entries (DATE, ENTRYTEXT) VALUES (@date, @entrytext);",
-       new { Date = emotionToInsert.Date, EntryText = emotionToInsert.EntryText });
+            _conn.Execute("INSERT INTO entries (DATE, EMOTIONNAME, ENTRYTEXT) VALUES (@date,@emotionname, @entrytext);",
+       new { Date = emotionToInsert.Date, EmotionName = emotionToInsert.EmotionName, EntryText = emotionToInsert.EntryText });
         }
 
         public void UpdateEmotion(Emotion emotion)
@@ -47,5 +47,7 @@ namespace FinalWebsite
             _conn.Execute("UPDATE entries SET EntryText = @entrytext WHERE NewEntryID = @id",
             new { EntryText = emotion.EntryText, id = emotion.NewEntryID });
         }
+
+    
     }
 }

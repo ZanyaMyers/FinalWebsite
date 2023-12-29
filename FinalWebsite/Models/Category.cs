@@ -1,4 +1,4 @@
-﻿namespace FindYourPeace.Models
+﻿namespace FinalWebsite.Models
 {
     public class Category
     {

@@ -10,7 +10,7 @@
         <th>EntryID</th>
         <th>Date</th>
         <th>Emotion </th>
-        <th>Entry Text</th>
+        <th>Tell Me About My Day</th>
     </tr>
 
     @foreach (var emotion in @Model)
@@ -18,7 +18,7 @@
         <tr>
             <td><a href=/Emotion/ViewEmotion/@emotion.NewEntryID>@emotion.NewEntryID</a></td>
             <td>@emotion.Date</td>
-            <td>@emotion.EmotionName</td>
+            <td>@emotion.EmotionType @emotion.EmotionName </td>
             <td>@emotion.EntryText</td>
            
         </tr>

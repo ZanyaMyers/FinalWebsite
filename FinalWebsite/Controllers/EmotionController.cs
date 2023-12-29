@@ -41,8 +41,8 @@ namespace FinalWebsite.Controllers
 
         public IActionResult InsertEmotion()
         {
-            var prod = repo.AssignCategory();
-            return View(prod);
+            var emo = repo.AssignCategory();
+            return View(emo);
         }
         public IActionResult InsertEmotionToDatabase(Emotion emotionToInsert)
         {
