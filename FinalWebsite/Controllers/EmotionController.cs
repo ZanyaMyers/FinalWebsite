@@ -49,10 +49,10 @@ namespace FinalWebsite.Controllers
             repo.InsertEmotion(emotionToInsert);
             return RedirectToAction("Index");
         }
-        //public IActionResult DeleteEmotion(Emotion emotion)
-        //{
-        //    repo.DeleteEmotion(emotion);
-        //    return RedirectToAction("Index");
-        //}
+        public IActionResult DeleteEmotion(Emotion emotion)
+        {
+            repo.DeleteEmotion(emotion);
+            return RedirectToAction("Index");
+        }
     }
 }

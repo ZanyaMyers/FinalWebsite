@@ -21,3 +21,12 @@
 <div style="display: block">
     <a href="/Emotion/UpdateEmotion/@Model.NewEntryID">Click Here to Add to This Entry</a>
 </div>
+
+<div style="display: block">
+
+    @using (Html.BeginForm("DeleteEmotion", "Emotion", "Post"))
+    {
+        <input type="hidden" asp-for="NewEntryID" value="@Model.NewEntryID" />
+        <input type="submit" onclick="return confirm('Are you sure?')" value="Delete This Entry" />
+    }
+</div>

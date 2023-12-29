@@ -21,6 +21,11 @@ namespace FinalWebsite
             return emotion;
         }
 
+        public void DeleteEmotion(Emotion emotion)
+        {
+            _conn.Execute("DELETE FROM entries WHERE NEWENTRYID = @id;", new { id = emotion.NewEntryID });
+        }
+
         public IEnumerable<Emotion> GetAllEmotions()
         {
             return _conn.Query<Emotion>("SELECT * FROM ENTRIES; SELECT * FROM emotions;");
@@ -38,13 +43,13 @@ namespace FinalWebsite
 
         public void InsertEmotion(Emotion emotionToInsert)
         {
-            _conn.Execute("INSERT INTO entries (DATE, EMOTIONNAME, ENTRYTEXT) VALUES (@date, @emotionname, @entrytext);",
+            _conn.Execute("INSERT INTO entries (DATE, EMOTIONNAME, ENTRYTEXT) VALUES (@date, @EmotionName, @EntryText);",
        new { Date = emotionToInsert.Date, EmotionType = emotionToInsert.EmotionType, EmotionName = emotionToInsert.EmotionName, EntryText = emotionToInsert.EntryText });
         }
 
         public void UpdateEmotion(Emotion emotion)
         {
-            _conn.Execute("UPDATE entries SET EntryText = @entrytext WHERE NewEntryID = @id",
+             _conn.Execute("UPDATE entries SET EntryText = @EntryText WHERE NewEntryID = @id",
             new { EntryText = emotion.EntryText, id = emotion.NewEntryID });
         }
 
