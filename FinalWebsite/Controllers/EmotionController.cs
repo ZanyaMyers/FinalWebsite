@@ -36,7 +36,23 @@ namespace FinalWebsite.Controllers
         {
             repo.UpdateEmotion(emotion);
 
-            return RedirectToAction("ViewEmotion", new { id = emotion.NewEntryID });
+            return RedirectToAction("Index", new { id = emotion.NewEntryID });
         }
+
+        public IActionResult InsertEmotion()
+        {
+            var prod = repo.AssignCategory();
+            return View(prod);
+        }
+        public IActionResult InsertEmotionToDatabase(Emotion emotionToInsert)
+        {
+            repo.InsertEmotion(emotionToInsert);
+            return RedirectToAction("Index");
+        }
+        //public IActionResult DeleteEmotion(Emotion emotion)
+        //{
+        //    repo.DeleteEmotion(emotion);
+        //    return RedirectToAction("Index");
+        //}
     }
 }

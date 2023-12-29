@@ -9,5 +9,11 @@ namespace FinalWebsite
         public Emotion GetEmotion(int id);
 
         public void UpdateEmotion(Emotion emotion);
+
+        public void InsertEmotion(Emotion emotionToInsert);
+
+        public IEnumerable<Category> GetCategories();
+
+        public Emotion AssignCategory();
     }
 }

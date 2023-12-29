@@ -1,0 +1,26 @@
+﻿@model Emotion
+
+<h2>Create a New Entry</h2>
+
+@using (Html.BeginForm("InsertEmotionToDatabase", "Emotion", FormMethod.Post))
+{
+    <input asp-for="NewEntryID" type="hidden" value="" />
+
+    <label asp-for="Date" class="control-label">Date</label>
+    <input asp-for="Date" type="date" class="form-control" />
+
+    <label asp-for="EntryText" class="control-label">Entry</label>
+    <input asp-for="EntryText" type="text" class="form-control" />
+
+    <div class="form-group">
+        <label asp-for="EmotionName">How are you feeling today?</label>
+        <select asp-for="EmotionName" class="form-control">
+            @foreach (var cat in Model.Categories)
+            {
+                <option value="@cat.EmotionType">@cat.EmotionType @cat.EmotionName</option>
+            }
+        </select>
+    </div>
+
+    <input type="submit" value="Create Entry" class="btn btn-primary" />
+}
