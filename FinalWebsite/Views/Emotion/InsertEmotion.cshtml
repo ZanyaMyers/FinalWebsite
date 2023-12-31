@@ -1,27 +1,93 @@
 ﻿@model Emotion
 
-<h2>Tell Me About Your Day</h2>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Boho Dear Diary Entry</title>
+    <style>
+        body {
+            font-family: 'CursiveFont', cursive;
+            background-color: #f8f3e7; /* Light beige background */
+            margin: 20px;
+            line-height: 1.6;
+            color: #634b4a; /* Terracotta text color */
+        }
 
-@using (Html.BeginForm("InsertEmotionToDatabase", "Emotion", FormMethod.Post))
-{
-    <input asp-for="NewEntryID" type="hidden" value="" />
+        h2 {
+            text-align: center;
+            color: #a0848c; /* Dusty rose heading color */
+        }
 
-    <label asp-for="Date" class="control-label">Date</label>
-    <input asp-for="Date" type="datetime-local" class="form-control" />
+        form {
+            max-width: 600px;
+            margin: 20px auto;
+            background-color: #f5e5d5; /* Warm beige form background */
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        }
 
-    <label asp-for="EntryText" class="control-label">Entry</label>
-    <input asp-for="EntryText" type="text" class="form-control" />
+        label {
+            color: #a0848c; /* Dusty rose label color */
+        }
 
-    <div class="form-group">
-        <label asp-for="EmotionName">How are you feeling today?</label>
-        <select asp-for="EmotionName" class="form-control">
-            @foreach (var cat in Model.Categories)
-            {
-               @*  <option value="@cat.EmotionType">@cat.EmotionName @cat.EmotionType</option> *@
-                <option value="@cat.EmotionName"> @cat.EmotionName</option>
+        input, select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #9b6c71; /* Muted burgundy border */
+            border-radius: 5px;
+            box-sizing: border-box;
+            background-color: #f8f3e7; /* Light beige input background */
+            color: #634b4a; /* Terracotta text color */
+        }
+
+            input[type="submit"] {
+                width: 100%;
+                padding: 15px;
+                border: none;
+                border-radius: 5px;
+                background-color: #a0848c; /* Dusty rose submit button color */
+                color: #f8f3e7; /* Light beige text color for submit button */
+                cursor: pointer;
+                transition: background-color 0.3s ease-in-out;
             }
-        </select>
-    </div>
 
-    <input type="submit" value="Create Entry" class="btn btn-primary" />
+                input[type="submit"]:hover {
+                    background-color: #9b6c71; /* Muted burgundy background on hover */
+                }
+    </style>
+</head>
+<body>
+
+    <h2>Dear Diary Entry</h2>
+
+    @using (Html.BeginForm("InsertEmotionToDatabase", "Emotion", FormMethod.Post))
+    {
+        <input asp-for="NewEntryID" type="hidden" value="" />
+
+        <label asp-for="Date" class="control-label">Date</label>
+        <input asp-for="Date" type="datetime-local" class="form-control" />
+
+        <label asp-for="EntryText" class="control-label">Entry</label>
+        <input asp-for="EntryText" type="text" class="form-control" />
+
+        <div class="form-group">
+            <label asp-for="EmotionName">How are you feeling today?</label>
+            <select asp-for="EmotionName" class="form-control">
+                @foreach (var cat in Model.Categories)
+                {
+                    <option value="@cat.EmotionName">@cat.EmotionName</option>
+                }
+            </select>
+        </div>
+
+        <input type="submit" value="Create Entry" class="btn btn-primary" />
+    }
+
+</body>
+</html>
+
 }

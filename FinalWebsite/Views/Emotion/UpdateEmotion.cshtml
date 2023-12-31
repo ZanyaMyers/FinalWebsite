@@ -1,19 +1,70 @@
 ﻿@model Emotion
 
-<h2>Update @Model.Date</h2>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Emotion Update</title>
+    <style>
+        body {
+            font-family: 'CursiveFont', cursive;
+            background-color: #f5e5d5; /* Warm beige background */
+            margin: 20px;
+            line-height: 1.6;
+            color: #634b4a; /* Terracotta text color */
+        }
 
-@using (Html.BeginForm("UpdateEmotionToDatabase", "Emotion", "Post"))
-{
-    <input asp-for="NewEntryID" type="hidden" value="@Model.NewEntryID" />
+        h2 {
+            text-align: center;
+            color: #a0848c; /* Dusty rose heading color */
+        }
 
-   @*  <label asp-for="Date" class="control-label">Date</label>
-    <input type="Date" name="Date" class="form-control" value="@Model.Date" />
+        label {
+            color: #a0848c; /* Dusty rose label color */
+        }
 
-    <label asp-for="EmotionName" class="control-label">Emotion</label>
-    <input type="text" name="Emotion" class="form-control" value="@Model.EmotionName" /> *@
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #9b6c71; /* Muted burgundy border */
+            border-radius: 5px;
+            box-sizing: border-box;
+            background-color: #f8f3e7; /* Light beige input background */
+            color: #634b4a; /* Terracotta text color */
+        }
 
-    <label asp-for="EntryText" class="control-label">Entry</label>
-    <input type="text"  name="EntryText" class="form-control" value="@Model.EntryText" />
+        input[type="submit"] {
+            width: 100%;
+            padding: 15px;
+            border: none;
+            border-radius: 5px;
+            background-color: #a0848c; /* Dusty rose submit button color */
+            color: #f5e5d5; /* Warm beige text color */
+            cursor: pointer;
+        }
 
-    <input type="submit" value="Update Entry" class="btn btn-primary" />
-}
+            input[type="submit"]:hover {
+                background-color: #9b6c71; /* Darker rose color on hover */
+            }
+    </style>
+</head>
+<body>
+
+    <h2>Welcome Back ! What else would you like to add to today's entry?'</h2>
+
+    @using (Html.BeginForm("UpdateEmotionToDatabase", "Emotion", FormMethod.Post))
+    {
+        <input asp-for="NewEntryID" type="hidden" value="@Model.NewEntryID" />
+
+        <label asp-for="EntryText" class="control-label">Update Your Emotion</label>
+        <input type="text" name="EntryText" class="form-control" value="@Model.EntryText" />
+
+        <input type="submit" value="Update To Your Diary" class="btn btn-primary" />
+    }
+
+</body>
+</html>
+
+
