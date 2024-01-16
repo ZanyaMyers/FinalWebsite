@@ -49,8 +49,8 @@ namespace FinalWebsite.Repository
 
         public void UpdateEmotion(Emotion emotion)
         {
-            _conn.Execute("UPDATE entries SET EntryText = @EntryText WHERE NewEntryID = @id",
-           new { emotion.EntryText, id = emotion.NewEntryID });
+            _conn.Execute("UPDATE entries SET Date = @Date, EmotionName = @EmotionName, EntryText = @EntryText WHERE NewEntryID = @id",
+           new { emotion.Date, emotion.EmotionName, emotion.EntryText, id = emotion.NewEntryID });
         }
 
 

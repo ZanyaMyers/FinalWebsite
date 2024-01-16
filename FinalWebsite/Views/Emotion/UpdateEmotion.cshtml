@@ -58,8 +58,22 @@
     {
         <input asp-for="NewEntryID" type="hidden" value="@Model.NewEntryID" />
 
+        <label asp-for="Date" class="control-label">Date</label>
+        <input asp-for="Date" type="datetime-local" class="form-control" />
+
         <label asp-for="EntryText" class="control-label">Update Your Emotion</label>
         <input type="text" name="EntryText" class="form-control" value="@Model.EntryText" />
+
+
+        @* <div class="form-group">
+            <label asp-for="EmotionName">How are you feeling today?</label>
+            <select asp-for="EmotionName" class="form-control">
+                @foreach (var cat in Model.Categories)
+                {
+                    <option value="@cat.EmotionName">@cat.EmotionName</option>
+                }
+            </select>
+        </div> *@
 
         <input type="submit" value="Update To Your Diary" class="btn btn-primary" />
     }
