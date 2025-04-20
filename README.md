@@ -1,0 +1,1 @@
+// This is my bootcamp final project. I created an online journal that allows you to make entries for the date, text, and emotions. every entry is given a unique ID number and stored in a SQL database 
